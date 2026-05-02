@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Any, Dict
 
 _FORMATS = [
@@ -31,5 +31,5 @@ def format_datetime_fields(data: Dict[str, Any]) -> Dict[str, Any]:
     for key in ('start_date', 'created_at', 'updated_at', 'joined_at'):
         value = out.get(key)
         if hasattr(value, 'strftime'):
-            out[key] = value.strftime('%Y-%m-%d %H:%M:%S')
+            out[key] = (value + timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
     return out
