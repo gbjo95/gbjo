@@ -47,7 +47,7 @@ class PartyScheduler:
                           r.dealer AS dealer_max,r.supporter AS supporter_max,r.name AS raid_name,r.difficulty,
                           CAST((julianday(p.start_date) - julianday('now','+9 hours')) * 86400 AS INTEGER) AS tdiff
                    FROM party p LEFT JOIN raid r ON p.raid_id = r.id
-                   WHERE p.start_date IS NOT NULL AND datetime(p.start_date) BETWEEN datetime('now','localtime','+9 hours','-5 minutes') AND datetime('now','localtime','+9 hours','+2 hours')'''
+                   WHERE p.start_date IS NOT NULL'''
             ) or []
             if not parties:
                 return [], {}, {}, set()
