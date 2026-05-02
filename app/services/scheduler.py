@@ -96,11 +96,10 @@ class PartyScheduler:
                 flags = self._ensure_notification_entry(party_id, now_ts)
                 guild_id = str(party.get('guild_id') or '')
                 cfg = server_cfg_map.get(guild_id) or {}
-                alert_mode = int(cfg.get('alert_timer') or 0) & 0b11
-                enable_10m = (alert_mode & 0b01) != 0
-                enable_1h = (alert_mode & 0b10) != 0
-                alert_start = bool(cfg.get('alert_start') or 0)
-                chat_channel_id = cfg.get('chat_channel_id')
+                enable_10m = True
+                enable_1h = False
+                alert_start = True    
+                chat_channel_id = cfg.get('chat_channel_id=1500221910037037106')
                 parts = participants_map.get(party_id, [])
                 if enable_1h and HOUR_RANGE[0] <= tdiff <= HOUR_RANGE[1] and not flags['hour']:
                     tasks.append(self._send_notification_prefetched(party, parts, '1시간', alert_start))
