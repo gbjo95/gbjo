@@ -93,6 +93,13 @@ class PartyScheduler:
             for party in parties or []:
                 party_id = int(party['id'])
                 tdiff = int(party.get('tdiff') or 0)
+                logger.info(
+    "ALARM_CHECK party_id=%s start_date=%s tdiff=%s participants=%s",
+    party_id,
+    party.get('start_date'),
+    tdiff,
+    len(participants_map.get(party_id, [])),
+)
                 flags = self._ensure_notification_entry(party_id, now_ts)
                 guild_id = str(party.get('guild_id') or '')
                 cfg = server_cfg_map.get(guild_id) or {}
