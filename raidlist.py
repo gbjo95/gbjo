@@ -29,6 +29,7 @@ raid_meta = {
     },
     '1710 3종': {
         '노말': {'min_lvl': 1710, 'dealer': 6, 'supporter': 2},
+    },        
 }
 
 raid_difficulty_map = {k: list(v.keys()) for k, v in raid_meta.items()}
