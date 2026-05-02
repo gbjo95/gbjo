@@ -90,7 +90,7 @@ class DiscordService:
             'description': f"-# 공격대 생성자 : <@{owner_display}>\nㅤ",
             'color': 0xFFFFFF,
             'fields': fields,
-            'footer': {'text': f"생성시각 {datetime.now().strftime('%Y-%m-%d %H:%M')}"},
+            'footer': {'text': f"생성시각 {(datetime.now() + timedelta(hours=9)).strftime('%Y-%m-%d %H:%M')}"},
         }
         if thumb_url:
             embed['thumbnail'] = {'url': thumb_url}
